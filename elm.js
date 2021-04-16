@@ -13946,7 +13946,7 @@ var $author$project$Main$createNavLink = F2(
 			$mdgriffith$elm_ui$Element$Input$button,
 			_List_fromArray(
 				[
-					$mdgriffith$elm_ui$Element$Font$size(24),
+					$mdgriffith$elm_ui$Element$Font$size(18),
 					$mdgriffith$elm_ui$Element$focused(
 					_List_fromArray(
 						[
@@ -14083,7 +14083,7 @@ var $author$project$Main$unlockedPage = function (model) {
 		]);
 };
 var $author$project$Main$view = function (model) {
-	var version = 'v1';
+	var version = 'v2';
 	var device = function () {
 		var _v0 = model.S.aG;
 		switch (_v0) {
