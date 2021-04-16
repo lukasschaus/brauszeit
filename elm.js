@@ -5178,15 +5178,15 @@ var $elm$browser$Browser$element = _Browser_element;
 var $author$project$Main$GotViewport = function (a) {
 	return {$: 4, a: a};
 };
+var $author$project$Main$Locked = 0;
 var $author$project$Main$PageHochzeit = 0;
 var $mdgriffith$elm_ui$Element$Phone = 0;
 var $mdgriffith$elm_ui$Element$Portrait = 0;
-var $author$project$Main$Unlocked = 1;
 var $elm$browser$Browser$Dom$getViewport = _Browser_withWindow(_Browser_getViewport);
 var $author$project$Main$init = _Utils_Tuple2(
 	{
 		V: {aG: 0, cR: 0},
-		az: 1,
+		az: 0,
 		j: 0,
 		af: ''
 	},
@@ -5614,6 +5614,7 @@ var $elm$browser$Browser$Events$onResize = function (func) {
 var $author$project$Main$subscriptions = function (model) {
 	return $elm$browser$Browser$Events$onResize($author$project$Main$OnResize);
 };
+var $author$project$Main$Unlocked = 1;
 var $mdgriffith$elm_ui$Element$BigDesktop = 3;
 var $mdgriffith$elm_ui$Element$Desktop = 2;
 var $mdgriffith$elm_ui$Element$Landscape = 1;
@@ -6148,7 +6149,7 @@ var $author$project$Main$update = F2(
 	function (msg, model) {
 		switch (msg.$) {
 			case 0:
-				return ($truqu$elm_md5$MD5$hex(model.af) === '0ba51ead481f9ffb012abe10bcf3354e') ? _Utils_Tuple2(
+				return ($truqu$elm_md5$MD5$hex(model.af) === '83d25c78352300228aff0dd8f01d469a') ? _Utils_Tuple2(
 					_Utils_update(
 						model,
 						{az: 1}),
@@ -6193,7 +6194,6 @@ var $author$project$Main$update = F2(
 					$elm$core$Platform$Cmd$none);
 		}
 	});
-var $author$project$Main$Locked = 0;
 var $mdgriffith$elm_ui$Internal$Model$Colored = F3(
 	function (a, b, c) {
 		return {$: 4, a: a, b: b, c: c};
@@ -13620,6 +13620,7 @@ var $author$project$Main$passwordPage = function (model) {
 		]);
 };
 var $mdgriffith$elm_ui$Element$Font$sansSerif = $mdgriffith$elm_ui$Internal$Model$SansSerif;
+var $author$project$Main$contactPageContent = _List_Nil;
 var $author$project$Main$contentWidth = function (model) {
 	var _v0 = model.V.aG;
 	if (!_v0) {
@@ -13997,6 +13998,7 @@ var $author$project$Main$locationPageContent = _Utils_ap(
 							]),
 						$author$project$Main$heading2('Mit der Bahn')))))));
 var $author$project$Main$PageFaq = 4;
+var $author$project$Main$PageKontakt = 3;
 var $author$project$Main$PageLocation = 2;
 var $author$project$Main$PageRSVP = 1;
 var $author$project$Main$ClickedNavLink = function (a) {
@@ -14091,7 +14093,7 @@ var $author$project$Main$navBar = function (model) {
 							$mdgriffith$elm_ui$Element$el,
 							_List_fromArray(
 								[$mdgriffith$elm_ui$Element$centerX]),
-							A3($author$project$Main$createNavLink, 0, 'Kontakt', model.j)),
+							A3($author$project$Main$createNavLink, 3, 'Kontakt', model.j)),
 							A2(
 							$mdgriffith$elm_ui$Element$el,
 							_List_fromArray(
@@ -14130,7 +14132,7 @@ var $author$project$Main$navBar = function (model) {
 					$mdgriffith$elm_ui$Element$el,
 					_List_fromArray(
 						[$mdgriffith$elm_ui$Element$centerX]),
-					A3($author$project$Main$createNavLink, 0, 'Kontakt', model.j)),
+					A3($author$project$Main$createNavLink, 3, 'Kontakt', model.j)),
 					A2(
 					$mdgriffith$elm_ui$Element$el,
 					_List_fromArray(
@@ -14139,40 +14141,41 @@ var $author$project$Main$navBar = function (model) {
 				]));
 	}
 };
-var $author$project$Main$rsvpPageContent = _List_fromArray(
-	[
-		A2(
-		$mdgriffith$elm_ui$Element$el,
-		_List_fromArray(
-			[
-				$mdgriffith$elm_ui$Element$centerX,
-				$mdgriffith$elm_ui$Element$Font$size(24),
-				$mdgriffith$elm_ui$Element$padding(30)
-			]),
-		A2(
+var $author$project$Main$rsvpPageContent = _Utils_ap(
+	$author$project$Main$heading1('Kommt ihr?'),
+	_List_fromArray(
+		[
+			A2(
 			$mdgriffith$elm_ui$Element$paragraph,
-			_List_Nil,
 			_List_fromArray(
 				[
-					$mdgriffith$elm_ui$Element$text('Bitte teile uns mit ob du kommst!')
-				]))),
-		A2(
-		$mdgriffith$elm_ui$Element$el,
-		_List_fromArray(
-			[$mdgriffith$elm_ui$Element$centerX]),
-		$mdgriffith$elm_ui$Element$html(
+					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+					$mdgriffith$elm_ui$Element$Font$center,
+					$mdgriffith$elm_ui$Element$centerX,
+					$mdgriffith$elm_ui$Element$Font$size(18),
+					$mdgriffith$elm_ui$Element$padding(10)
+				]),
+			_List_fromArray(
+				[
+					$mdgriffith$elm_ui$Element$text('Bitte teilt uns mit ob denkt dass ihr kommen werdet. Wir wissen, dass in diesen Zeiten nichts ganz sicher ist, daher könnt ihr natürlich auch jederzeit eure Meinung ändern. Das ist auch der Grund warum wir eure email Adresse abfragen. So bekommt ihr nämlich einen Link unter dem ihr eure Zusage bearbeiten könnt. Bitte gebt uns so viele Infos wie möglich auf diesem Weg, das hilft uns sehr bei der Organisation.')
+				])),
 			A2(
-				$elm$html$Html$iframe,
-				_List_fromArray(
-					[
-						$elm$html$Html$Attributes$src('https://docs.google.com/forms/d/e/1FAIpQLSfI0ZV43UiN0OTtUiXznxe_mduCnu6FLFSwvM9ccAWUVtu5Hg/viewform?embedded=true'),
-						$elm$html$Html$Attributes$width(640),
-						$elm$html$Html$Attributes$height(1200),
-						A2($elm$html$Html$Attributes$attribute, 'marginheight', '0'),
-						A2($elm$html$Html$Attributes$attribute, 'frameborder', '0')
-					]),
-				_List_Nil)))
-	]);
+			$mdgriffith$elm_ui$Element$el,
+			_List_fromArray(
+				[$mdgriffith$elm_ui$Element$centerX]),
+			$mdgriffith$elm_ui$Element$html(
+				A2(
+					$elm$html$Html$iframe,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$src('https://docs.google.com/forms/d/e/1FAIpQLSfI0ZV43UiN0OTtUiXznxe_mduCnu6FLFSwvM9ccAWUVtu5Hg/viewform?embedded=true'),
+							$elm$html$Html$Attributes$width(640),
+							$elm$html$Html$Attributes$height(1200),
+							A2($elm$html$Html$Attributes$attribute, 'marginheight', '0'),
+							A2($elm$html$Html$Attributes$attribute, 'frameborder', '0')
+						]),
+					_List_Nil)))
+		]));
 var $author$project$Main$unlockedPage = function (model) {
 	var content = function () {
 		var _v0 = model.j;
@@ -14182,7 +14185,7 @@ var $author$project$Main$unlockedPage = function (model) {
 			case 1:
 				return $author$project$Main$rsvpPageContent;
 			case 3:
-				return $author$project$Main$hochzeitPageContent;
+				return $author$project$Main$contactPageContent;
 			case 2:
 				return $author$project$Main$locationPageContent;
 			default:
