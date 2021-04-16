@@ -5189,7 +5189,9 @@ var $elm$core$Task$perform = F2(
 			A2($elm$core$Task$map, toMessage, task));
 	});
 var $elm$browser$Browser$element = _Browser_element;
-var $author$project$Main$Big = 1;
+var $author$project$Main$Big = function (a) {
+	return {$: 1, a: a};
+};
 var $author$project$Main$GotViewport = function (a) {
 	return {$: 4, a: a};
 };
@@ -5197,7 +5199,12 @@ var $author$project$Main$PageHochzeit = 0;
 var $author$project$Main$Unlocked = 1;
 var $elm$browser$Browser$Dom$getViewport = _Browser_withWindow(_Browser_getViewport);
 var $author$project$Main$init = _Utils_Tuple2(
-	{S: 1, ax: 1, ay: 0, ac: ''},
+	{
+		S: $author$project$Main$Big(2000),
+		ax: 1,
+		ay: 0,
+		ac: ''
+	},
 	A2($elm$core$Task$perform, $author$project$Main$GotViewport, $elm$browser$Browser$Dom$getViewport));
 var $author$project$Main$OnResize = F2(
 	function (a, b) {
@@ -5622,9 +5629,11 @@ var $elm$browser$Browser$Events$onResize = function (func) {
 var $author$project$Main$subscriptions = function (model) {
 	return $elm$browser$Browser$Events$onResize($author$project$Main$OnResize);
 };
-var $author$project$Main$Small = 0;
+var $author$project$Main$Small = function (a) {
+	return {$: 0, a: a};
+};
 var $author$project$Main$chooseDevice = function (x) {
-	return (x < 900) ? 0 : 1;
+	return (x < 900) ? $author$project$Main$Small(x) : $author$project$Main$Big(x);
 };
 var $elm$core$Bitwise$and = _Bitwise_and;
 var $elm$core$Array$repeat = F2(
@@ -13615,7 +13624,7 @@ var $author$project$Main$passwordPage = function (model) {
 var $mdgriffith$elm_ui$Element$Font$sansSerif = $mdgriffith$elm_ui$Internal$Model$SansSerif;
 var $author$project$Main$contentWidth = function (model) {
 	var _v0 = model.S;
-	if (!_v0) {
+	if (!_v0.$) {
 		return $mdgriffith$elm_ui$Element$fill;
 	} else {
 		return A2($mdgriffith$elm_ui$Element$maximum, 900, $mdgriffith$elm_ui$Element$fill);
@@ -14076,7 +14085,18 @@ var $author$project$Main$unlockedPage = function (model) {
 		]);
 };
 var $author$project$Main$view = function (model) {
-	var device = (model.S === 1) ? $mdgriffith$elm_ui$Element$text('Big') : $mdgriffith$elm_ui$Element$text('Small');
+	var device = function () {
+		var _v0 = model.S;
+		if (_v0.$ === 1) {
+			var x = _v0.a;
+			return $mdgriffith$elm_ui$Element$text(
+				'Big ' + $elm$core$String$fromInt(x));
+		} else {
+			var x = _v0.a;
+			return $mdgriffith$elm_ui$Element$text(
+				'Small ' + $elm$core$String$fromInt(x));
+		}
+	}();
 	var content = (!model.ax) ? $author$project$Main$passwordPage(model) : $author$project$Main$unlockedPage(model);
 	return A2(
 		$mdgriffith$elm_ui$Element$layout,
